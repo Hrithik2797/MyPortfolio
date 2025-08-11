@@ -1,168 +1,733 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <title>Hrithik Sharma | Data & ML Engineer Portfolio</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="fontawesome-all.min.css">
+    <title>Hrithik Sharma - Data Analyst</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #06b6d4;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-light: #9ca3af;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-dark: #0f172a;
+            --border-color: #e5e7eb;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.1"/><circle cx="10" cy="50" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ffffff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 5rem 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: var(--text-primary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.8), rgba(6, 182, 212, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image::before {
+            opacity: 1;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-date {
+            color: var(--text-light);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: var(--bg-dark);
+            color: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .contact-item a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: #020617;
+            color: #64748b;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <div id="wrapper">
-    <!-- Intro Header -->
-    <section id="intro" class="special">
-      <h1>Hrithik Sharma</h1>
-      <h2>Data & ML Engineer | Analytics Innovator | Azure Cloud Specialist</h2>
-      <p>
-        Results-driven professional with 4+ years’ experience delivering actionable insights and optimizing reporting pipelines using Python, Power BI, SQL, and Azure Cloud.<br>
-        Adept at translating complex business challenges into robust data solutions and driving measurable business improvements.
-      </p>
-      <ul class="icons alt">
-        <li><a href="https://github.com/hrithik2797" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-        <li><a href="https://www.linkedin.com/in/hrithik-sharma-27131214b/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-        <li><a href="mailto:hrithiks@umich.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-      </ul>
-    </section>
-    
-    <header id="header">
-      <div class="logo">Portfolio</div>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">Hrithik Sharma</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/hrithik-sharma-27131214b/" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/Hrithik2797?tab=repositories" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </nav>
     </header>
-    
-    <!-- Nav -->
-    <nav id="nav">
-      <ul class="links">
-        <li class="active"><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#visuals">Dashboards</a></li>
-        <li><a href="#certs">Certifications</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    
-    <!-- Main Content -->
-    <div id="main">
-      <section id="skills" class="special">
-        <header class="major">
-          <h2>Key Skills</h2>
-        </header>
-        <ul>
-          <li><strong>Programming:</strong> Python (NumPy, Pandas, Matplotlib, Plotly), R, SQL, Javascript</li>
-          <li><strong>Cloud Platforms:</strong> Azure (Data Factory, Databricks, Synapse Analytics), AWS</li>
-          <li><strong>Visualization:</strong> Power BI, Tableau, Adobe Analytics</li>
-          <li><strong>Machine Learning:</strong> Scikit-Learn, Regression, SVM, XGBoost, NLP, LLM</li>
-          <li><strong>Data Tools:</strong> MySQL, PySpark, Excel, Alteryx, JIRA, ServiceNow</li>
-        </ul>
-      </section>
 
-      <section id="projects" class="special">
-        <header class="major">
-          <h2>Impactful Projects</h2>
-        </header>
-        <div class="posts">
-          <article>
-            <h3>Pedestrian Injury Severity Detection</h3>
-            <p>
-              Engineered and visualized predictive models (Logistic Regression, Python, Plotly) to assess pedestrian injury risk in traffic crashes.<br>
-              Built interactive dashboards highlighting KPIs, with data-driven recommendations adopted by planners to improve road safety.<br>
-              Identified key correlations between weather and accident rates.
-            </p>
-          </article>
-          <article>
-            <h3>Data Cleaning & Dashboard</h3>
-            <p>
-              Cleaned and transformed complex datasets in PowerBI, creating interactive dashboards with diverse charts to visualize key trends in data-related job markets.<br>
-              Empowered stakeholders with rapid, data-driven insights to optimize hiring and executive strategies.
-            </p>
-          </article>
-          <article>
-            <h3>Red Wine Quality Prediction</h3>
-            <p>
-              Designed and compared Random Forest/Logistic Regression models, achieving 91% accuracy in wine quality prediction.<br>
-              Feature engineering and visualization led to actionable insights for product managers, optimizing product quality assessment.
-            </p>
-          </article>
-          <article>
-            <h3>Customer Churn Analytics</h3>
-            <p>
-              Used Random Forest, SVM, and XGBoost to pinpoint churn drivers and improve intervention accuracy.<br>
-              Project findings presented to leadership led to business actions reducing customer churn significantly.
-            </p>
-          </article>
-          <article>
-            <h3>Azure Data Medallion Architecture</h3>
-            <p>
-              Built end-to-end ELT pipeline processing 10,000+ records using Azure Data Factory, Databricks, and Synapse Analytics.<br>
-              Automated data ingestion and transformation, delivering 99.5% data quality and enabling scalable, real-time analytics for executive reporting.
-            </p>
-          </article>
-          <article>
-            <h3>Google Analytics Revenue Prediction</h3>
-            <p>
-              Advanced regression models (GLM, Box-Cox) improved revenue prediction accuracy and customer segmentation for targeted marketing.<br>
-              Visualized top revenue-generating traffic sources and enabled data-driven marketing strategy recommendations.
-            </p>
-          </article>
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Data Analyst & Insights Expert</h1>
+                <p class="hero-subtitle">
+                    Transforming raw data into actionable insights through advanced analytics, 
+                    machine learning, and compelling visualizations
+                </p>
+                
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <div>SQL</div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-python"></i>
+                        <div>Python</div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-chart-bar"></i>
+                        <div>PowerBI</div>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-table"></i>
+                        <div>Excel</div>
+                    </div>
+                </div>
+                
+                <a href="#projects" class="cta-button">
+                    <i class="fas fa-arrow-down"></i>
+                    View My Work
+                </a>
+            </div>
         </div>
-      </section>
-      
-      <section id="visuals" class="special">
-        <header class="major">
-          <h2>Visual Dashboards</h2>
-        </header>
-        <div class="row aln-center">
-          <div class="col-6 col-12-medium">
-            <span class="image fit"><img src="images/powerbi_dashboard.jpg" alt="PowerBI Dashboard"></span>
-            <p>
-              Interactive dashboard visualizing market and job trends; enabled HR and talent teams to optimize recruitment efforts.
-            </p>
-          </div>
-          <div class="col-6 col-12-medium">
-            <span class="image fit"><img src="images/injury_dashboard.jpg" alt="Pedestrian Injury Dashboard"></span>
-            <p>
-              Dashboard highlighting KPIs for injury severity prediction, improving data-driven road safety planning.
-            </p>
-          </div>
-        </div>
-      </section>
+    </section>
 
-      <section id="certs" class="special">
-        <header class="major">
-          <h2>Certifications & Leadership</h2>
-        </header>
-        <ul>
-          <li>Alteryx in Health Care</li>
-          <li>Adobe Analytics (LinkedIn)</li>
-          <li>ML Foundations: Statistics (NASBA)</li>
-          <li>Vice President—Engineers Society</li>
-          <li>Treasurer—Student Activities Board</li>
-          <li>Planet Blue Ambassador—championed sustainability, led workshops for 200+ people</li>
-          <li>Hackathon Winner (3CLogic)</li>
-        </ul>
-      </section>
-      
-      <section id="contact" class="special">
-        <header class="major">
-          <h2>Contact</h2>
-        </header>
-        <ul class="icons alt">
-          <li><span class="icon solid fa-envelope"></span> hrithiks@umich.edu</li>
-          <li><a href="https://www.linkedin.com/in/hrithik-sharma-27131214b/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-          <li><a href="https://github.com/hrithik2797" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-        </ul>
-        <p>
-          <strong>Ready to drive business impact—let’s connect for ML engineering, analytics, or cloud projects!</strong>
-        </p>
-      </section>
-    </div>
-    
-    <footer id="footer">
-      <div id="copyright">
-        <ul>
-          <li>&copy; Hrithik Sharma</li>
-          <li>Design: Massively by HTML5 UP</li>
-        </ul>
-      </div>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Projects</h2>
+            
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card fade-in">
+                    <div class="project-image" style="background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-date">May 17, 2024</div>
+                        <h3 class="project-title">Data Cleaning and EDA In SQL</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">Data Cleaning</span>
+                            <span class="tech-tag">EDA</span>
+                        </div>
+                        <p class="project-description">
+                            Comprehensive data cleaning and exploratory data analysis of companies layoff dataset, 
+                            identifying patterns and trends in workforce reductions across industries.
+                        </p>
+                        <a href="https://github.com/Hrithik2797/DataCleaning/blob/main/MyDataCleaningProject.sql" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card fade-in">
+                    <div class="project-image" style="background-image: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-date">December 10, 2023</div>
+                        <h3 class="project-title">Pedestrian Injury Severity Analysis</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">Logistic Regression</span>
+                        </div>
+                        <p class="project-description">
+                            Machine learning model using logistic regression to analyze pedestrian injury severity, 
+                            examining temporal and geographical patterns affecting accident outcomes.
+                        </p>
+                        <a href="https://github.com/Hrithik2797/PedestrianInjurySeverityDetection/blob/main/586_Dec_10.ipynb" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card fade-in">
+                    <div class="project-image" style="background-image: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-date">May 20, 2024</div>
+                        <h3 class="project-title">Data Jobs PowerBI Dashboard</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">PowerBI</span>
+                            <span class="tech-tag">Data Visualization</span>
+                            <span class="tech-tag">Dashboard</span>
+                        </div>
+                        <p class="project-description">
+                            Interactive dashboard visualizing data-related job market trends, salary distributions, 
+                            and skill requirements across different industries and locations.
+                        </p>
+                        <a href="https://github.com/Hrithik2797/PowerBIDashboard/tree/main" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card fade-in">
+                    <div class="project-image" style="background-image: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-date">June 1, 2025</div>
+                        <h3 class="project-title">Wine Quality Prediction Model</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Random Forest</span>
+                            <span class="tech-tag">Classification</span>
+                        </div>
+                        <p class="project-description">
+                            Machine learning classification model using Random Forest and Logistic Regression 
+                            to predict red wine quality based on physicochemical properties.
+                        </p>
+                        <a href="https://github.com/Hrithik2797/wineQualityPrediction/blob/main/WineQuality.ipynb" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card fade-in">
+                    <div class="project-image" style="background-image: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-date">June 23, 2025</div>
+                        <h3 class="project-title">Customer Churn Prediction</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">XGBoost</span>
+                            <span class="tech-tag">SVM</span>
+                        </div>
+                        <p class="project-description">
+                            Comparative analysis of machine learning models (Random Forest, SVM, XGBoost) 
+                            to predict customer churn and identify key retention factors.
+                        </p>
+                        <a href="https://github.com/Hrithik2797/CustomerChurn/blob/main/churn.ipynb" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card fade-in">
+                    <div class="project-image" style="background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-date">July 10, 2025</div>
+                        <h3 class="project-title">Azure End-to-End ETL Pipeline</h3>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Azure Data Factory</span>
+                            <span class="tech-tag">Databricks</span>
+                            <span class="tech-tag">Synapse Analytics</span>
+                        </div>
+                        <p class="project-description">
+                            Complete ETL pipeline implementing medallion architecture with data ingestion, 
+                            transformation, and analytics using Azure cloud services.
+                        </p>
+                        <a href="https://github.com/Hrithik2797/AdventureWorks_Azure/blob/main/Architecture.png" class="project-link" target="_blank">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in" style="color: white;">Let's Connect</h2>
+            
+            <div class="contact-grid">
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Location</h3>
+                    <p>Canton, Michigan 48187</p>
+                </div>
+                
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <a href="tel:+17343949418">(734) 394-9418</a>
+                </div>
+                
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <a href="mailto:hrithiks@umich.edu">hrithiks@umich.edu</a>
+                </div>
+                
+                <div class="contact-item fade-in">
+                    <div class="contact-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Social</h3>
+                    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+                        <a href="https://www.linkedin.com/in/hrithik-sharma-27131214b/" target="_blank" style="font-size: 1.5rem;">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/Hrithik2797?tab=repositories" target="_blank" style="font-size: 1.5rem;">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Hrithik Sharma. All rights reserved. | Designed with passion for data</p>
+        </div>
     </footer>
-  </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
 </body>
 </html>

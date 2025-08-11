@@ -242,6 +242,18 @@
             background-size: cover;
             background-position: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
         }
 
         .project-image::before {
@@ -251,13 +263,39 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.8), rgba(6, 182, 212, 0.8));
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.7), rgba(6, 182, 212, 0.7));
             opacity: 0;
             transition: opacity 0.3s ease;
+            z-index: 1;
         }
 
         .project-card:hover .project-image::before {
             opacity: 1;
+        }
+
+        /* Fallback gradient backgrounds for projects without images */
+        .project-image.sql-project {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .project-image.ml-project {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .project-image.dashboard-project {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .project-image.wine-project {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .project-image.churn-project {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .project-image.azure-project {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .project-content {
@@ -484,7 +522,9 @@
             <div class="projects-grid">
                 <!-- Project 1 -->
                 <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="project-image sql-project">
+                        <!-- Replace with your custom image: -->
+                        <img src="images/Layoffreal.jpeg" alt="Data Cleaning and EDA In SQL">
                     </div>
                     <div class="project-content">
                         <div class="project-date">May 17, 2024</div>
@@ -506,7 +546,9 @@
 
                 <!-- Project 2 -->
                 <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="project-image ml-project">
+                        <!-- Replace with your custom image: -->
+                        <img src="images/Pedestrian.png" alt="Pedestrian Injury Severity Analysis">
                     </div>
                     <div class="project-content">
                         <div class="project-date">December 10, 2023</div>
@@ -528,7 +570,9 @@
 
                 <!-- Project 3 -->
                 <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <div class="project-image dashboard-project">
+                        <!-- Replace with your custom image: -->
+                        <img src="images/power-bi.jpg" alt="Data Jobs PowerBI Dashboard">
                     </div>
                     <div class="project-content">
                         <div class="project-date">May 20, 2024</div>
@@ -550,7 +594,9 @@
 
                 <!-- Project 4 -->
                 <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="project-image wine-project">
+                        <!-- Replace with your custom image: -->
+                        <img src="images/wine.jpg" alt="Wine Quality Prediction Model">
                     </div>
                     <div class="project-content">
                         <div class="project-date">June 1, 2025</div>
@@ -572,7 +618,9 @@
 
                 <!-- Project 5 -->
                 <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                    <div class="project-image churn-project">
+                        <!-- Replace with your custom image: -->
+                        <img src="images/CustImage.png" alt="Customer Churn Prediction">
                     </div>
                     <div class="project-content">
                         <div class="project-date">June 23, 2025</div>
@@ -594,7 +642,9 @@
 
                 <!-- Project 6 -->
                 <div class="project-card fade-in">
-                    <div class="project-image" style="background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="project-image azure-project">
+                        <!-- Replace with your custom image: -->
+                        <img src="images/azure_pic.png" alt="Azure End-to-End ETL Pipeline">
                     </div>
                     <div class="project-content">
                         <div class="project-date">July 10, 2025</div>
